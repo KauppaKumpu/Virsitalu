@@ -9,15 +9,21 @@
         function tallennaTiedot() {
             const otsikko = document.getElementById("otsikko").value;
             const virret = document.getElementById("virret").value;
-            const vapaateksti = document.getElementById("vapaateksti").value;
+            const vapaateksti1 = document.getElementById("vapaateksti1").value;
+            const vapaateksti2 = document.getElementById("vapaateksti2").value;
+            const vapaateksti3 = document.getElementById("vapaateksti3").value;
             const taustakuva = document.getElementById("taustakuva").value;
+            const logo = document.getElementById("logo").value;
+            const teemakuva = document.getElementById("teemakuva").value;
             const liturginenVari = document.getElementById("liturginenVari").value;
 
             const tiedot = {
                 otsikko,
                 virret,
-                vapaateksti,
+                vapaatekstit: [vapaateksti1, vapaateksti2, vapaateksti3],
                 taustakuva,
+                logo,
+                teemakuva,
                 liturginenVari
             };
 
@@ -32,14 +38,26 @@
     <label for="otsikko">Tilaisuuden otsikko:</label><br>
     <input type="text" id="otsikko"><br><br>
 
-    <label for="virret">Virret (pilkulla erotettu):</label><br>
+    <label for="virret">Virret (esim. 123&1-4, 234&1,3):</label><br>
     <input type="text" id="virret"><br><br>
 
-    <label for="vapaateksti">Vapaateksti:</label><br>
-    <textarea id="vapaateksti"></textarea><br><br>
+    <label for="vapaateksti1">Teksti 1:</label><br>
+    <textarea id="vapaateksti1"></textarea><br><br>
+
+    <label for="vapaateksti2">Teksti 2:</label><br>
+    <textarea id="vapaateksti2"></textarea><br><br>
+
+    <label for="vapaateksti3">Teksti 3:</label><br>
+    <textarea id="vapaateksti3"></textarea><br><br>
 
     <label for="taustakuva">Taustakuvan URL:</label><br>
     <input type="text" id="taustakuva"><br><br>
+
+    <label for="logo">Logon URL tai tiedostopolku:</label><br>
+    <input type="text" id="logo"><br><br>
+
+    <label for="teemakuva">Teemakuvan URL tai tiedostopolku:</label><br>
+    <input type="text" id="teemakuva"><br><br>
 
     <label for="liturginenVari">Liturginen väri:</label><br>
     <select id="liturginenVari">
