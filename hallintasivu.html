@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virsitaulu - Hallintasivu</title>
+    <script>
+        // Tallentaa käyttäjän syöttämät tiedot LocalStorageen
+        function tallennaTiedot() {
+            const otsikko = document.getElementById("otsikko").value;
+            const virret = document.getElementById("virret").value;
+            const vapaateksti = document.getElementById("vapaateksti").value;
+            const taustakuva = document.getElementById("taustakuva").value;
+            const liturginenVari = document.getElementById("liturginenVari").value;
+
+            const tiedot = {
+                otsikko,
+                virret,
+                vapaateksti,
+                taustakuva,
+                liturginenVari
+            };
+
+            // Tallennetaan tiedot selaimen LocalStorageen
+            localStorage.setItem("virsitauluData", JSON.stringify(tiedot));
+            alert("Tiedot tallennettu!");
+        }
+    </script>
+</head>
+<body>
+    <h1>Virsitaulu - Hallintasivu</h1>
+    <label for="otsikko">Tilaisuuden otsikko:</label><br>
+    <input type="text" id="otsikko"><br><br>
+
+    <label for="virret">Virret (pilkulla erotettu):</label><br>
+    <input type="text" id="virret"><br><br>
+
+    <label for="vapaateksti">Vapaateksti:</label><br>
+    <textarea id="vapaateksti"></textarea><br><br>
+
+    <label for="taustakuva">Taustakuvan URL:</label><br>
+    <input type="text" id="taustakuva"><br><br>
+
+    <label for="liturginenVari">Liturginen väri:</label><br>
+    <select id="liturginenVari">
+        <option value="white">Valkoinen</option>
+        <option value="red">Punainen</option>
+        <option value="green">Vihreä</option>
+        <option value="purple">Violetti</option>
+        <option value="black">Musta</option>
+    </select><br><br>
+
+    <button onclick="tallennaTiedot()">Tallenna tiedot</button>
+</body>
+</html>
