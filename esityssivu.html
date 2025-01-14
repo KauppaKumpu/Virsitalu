@@ -22,6 +22,18 @@
             padding: 20px;
             border-radius: 10px;
         }
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            max-width: 100px;
+        }
+        #teemakuva {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            max-width: 100px;
+        }
     </style>
     <script>
         // Hakee tiedot LocalStoragesta ja näyttää ne
@@ -33,9 +45,30 @@
                 if (data.taustakuva) {
                     document.body.style.backgroundImage = `url(${data.taustakuva})`;
                 }
+
+                if (data.logo) {
+                    const logo = document.getElementById("logo");
+                    logo.src = data.logo;
+                    logo.style.display = "block";
+                }
+
+                if (data.teemakuva) {
+                    const teemakuva = document.getElementById("teemakuva");
+                    teemakuva.src = data.teemakuva;
+                    teemakuva.style.display = "block";
+                }
+
                 document.getElementById("otsikko").innerText = data.otsikko || "Tilaisuuden otsikko";
                 document.getElementById("virret").innerText = data.virret || "Virret";
-                document.getElementById("vapaateksti").innerText = data.vapaateksti || "Vapaateksti";
+
+                const tekstit = document.getElementById("tekstit");
+                data.vapaatekstit.forEach((teksti, index) => {
+                    if (teksti) {
+                        const p = document.createElement("p");
+                        p.innerText = teksti;
+                        tekstit.appendChild(p);
+                    }
+                });
             } else {
                 alert("Ei tallennettuja tietoja!");
             }
@@ -46,10 +79,12 @@
     </script>
 </head>
 <body>
+    <img id="logo" style="display:none;" alt="Logo">
+    <img id="teemakuva" style="display:none;" alt="Teemakuva">
     <div class="content">
         <h1 id="otsikko">Tilaisuuden otsikko</h1>
         <p id="virret">Virret</p>
-        <p id="vapaateksti">Vapaateksti</p>
+        <div id="tekstit"></div>
     </div>
 </body>
 </html>
