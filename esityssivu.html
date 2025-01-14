@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virsitaulu - Esityssivu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        // Hakee tiedot LocalStoragesta ja näyttää ne
+        function naytaTiedot() {
+            const data = JSON.parse(localStorage.getItem("virsitauluData"));
+
+            if (data) {
+                document.body.style.backgroundColor = data.liturginenVari;
+                if (data.taustakuva) {
+                    document.body.style.backgroundImage = `url(${data.taustakuva})`;
+                }
+                document.getElementById("otsikko").innerText = data.otsikko || "Tilaisuuden otsikko";
+                document.getElementById("virret").innerText = data.virret || "Virret";
+                document.getElementById("vapaateksti").innerText = data.vapaateksti || "Vapaateksti";
+            } else {
+                alert("Ei tallennettuja tietoja!");
+            }
+        }
+
+        // Lataa tiedot heti sivun avauduttua
+        window.onload = naytaTiedot;
+    </script>
+</head>
+<body>
+    <div class="content">
+        <h1 id="otsikko">Tilaisuuden otsikko</h1>
+        <p id="virret">Virret</p>
+        <p id="vapaateksti">Vapaateksti</p>
+    </div>
+</body>
+</html>
