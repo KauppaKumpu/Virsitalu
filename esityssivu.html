@@ -21,35 +21,35 @@
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
+            width: 90%;
+            max-width: 1200px;
         }
         #otsikko {
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: bold;
             margin-bottom: 20px;
         }
-        #virret {
-            font-size: 1.8em;
-            margin-bottom: 20px;
+        #virret p {
+            font-size: 2em;
+            margin: 5px 0;
         }
         #tekstit p {
-            font-size: 1.5em;
+            font-size: 1.8em;
             margin: 10px 0;
         }
-        #logo {
+        #logo, #teemakuva {
+            max-width: 150px;
             position: absolute;
             top: 10px;
+        }
+        #logo {
             left: 10px;
-            max-width: 100px;
         }
         #teemakuva {
-            position: absolute;
-            top: 10px;
             right: 10px;
-            max-width: 100px;
         }
     </style>
     <script>
-        // Hakee tiedot LocalStoragesta ja näyttää ne
         function naytaTiedot() {
             const data = JSON.parse(localStorage.getItem("virsitauluData"));
 
@@ -90,7 +90,6 @@
             }
         }
 
-        // Lataa tiedot heti sivun avauduttua
         window.onload = naytaTiedot;
     </script>
 </head>
