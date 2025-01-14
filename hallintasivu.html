@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virsitaulu - Hallintasivu</title>
+    <style>
+        body {
+            font-size: 1.5em;
+            margin: 20px;
+        }
+        label, textarea, input, button, select {
+            display: block;
+            margin: 10px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            font-size: 1em;
+        }
+        input, select {
+            width: 100%;
+            font-size: 1.2em;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    </style>
     <script>
-        // Tallentaa käyttäjän syöttämät tiedot LocalStorageen
         function tallennaTiedot() {
             const otsikko = document.getElementById("otsikko").value;
             const virret = document.getElementById("virret").value;
@@ -27,7 +50,6 @@
                 liturginenVari
             };
 
-            // Tallennetaan tiedot selaimen LocalStorageen
             localStorage.setItem("virsitauluData", JSON.stringify(tiedot));
             alert("Tiedot tallennettu!");
         }
@@ -37,48 +59,29 @@
     <h1>Virsitaulu - Hallintasivu</h1>
     <p>Ohjeet:</p>
     <ul>
-        <li><b>Tilaisuuden otsikko:</b> Kirjoita tilaisuuden nimi, esimerkiksi "Jumalanpalvelus".</li>
-        <li><b>Virret:</b> Kirjoita virsinumerot ja mahdolliset säkeistöt. Käytä `&`-merkkiä erottimena. Esimerkiksi: 123&1-4, 234&1,3.</li>
-        <li><b>Tekstit:</b> Voit lisätä kolme erillistä tekstiä, esimerkiksi Raamatun kohtia tai rukouksia.</li>
-        <li><b>Taustakuvan URL:</b> Anna kuvan verkkosijainnin osoite tai jätä tyhjäksi.</li>
-        <li><b>Logon URL:</b> Anna logon sijainnin osoite tai jätä tyhjäksi.</li>
-        <li><b>Teemakuvan URL:</b> Anna teemakuvan osoite tai jätä tyhjäksi.</li>
-        <li><b>Liturginen väri:</b> Valitse taustaväri liturgisten värien mukaan.</li>
+        <li><b>Virret:</b> Syötä muodossa <code>numero:alussa-loppu</code> tai <code>numero:säe1,säe2</code>.</li>
+        <li><b>Esimerkki:</b> 123:1-4, 234:1,3.</li>
     </ul>
-    <br>
-    <label for="otsikko">Tilaisuuden otsikko:</label><br>
-    <input type="text" id="otsikko"><br><br>
-
-    <label for="virret">Virret (esim. 123&1-4, 234&1,3):</label><br>
-    <input type="text" id="virret"><br><br>
-
-    <label for="vapaateksti1">Teksti 1:</label><br>
-    <textarea id="vapaateksti1"></textarea><br><br>
-
-    <label for="vapaateksti2">Teksti 2:</label><br>
-    <textarea id="vapaateksti2"></textarea><br><br>
-
-    <label for="vapaateksti3">Teksti 3:</label><br>
-    <textarea id="vapaateksti3"></textarea><br><br>
-
-    <label for="taustakuva">Taustakuvan URL:</label><br>
-    <input type="text" id="taustakuva"><br><br>
-
-    <label for="logo">Logon URL tai tiedostopolku:</label><br>
-    <input type="text" id="logo"><br><br>
-
-    <label for="teemakuva">Teemakuvan URL tai tiedostopolku:</label><br>
-    <input type="text" id="teemakuva"><br><br>
-
-    <label for="liturginenVari">Liturginen väri:</label><br>
-    <select id="liturginenVari">
-        <option value="white">Valkoinen</option>
-        <option value="red">Punainen</option>
-        <option value="green">Vihreä</option>
-        <option value="purple">Violetti</option>
-        <option value="black">Musta</option>
-    </select><br><br>
-
-    <button onclick="tallennaTiedot()">Tallenna tiedot</button>
-</body>
-</html>
+    <label for="otsikko">Tilaisuuden otsikko:</label>
+    <input type="text" id="otsikko" placeholder="Esim. Jumalanpalvelus">
+    
+    <label for="virret">Virret (esim. 123:1-4, 234:1,3):</label>
+    <input type="text" id="virret">
+    
+    <label for="vapaateksti1">Teksti 1:</label>
+    <textarea id="vapaateksti1"></textarea>
+    
+    <label for="vapaateksti2">Teksti 2:</label>
+    <textarea id="vapaateksti2"></textarea>
+    
+    <label for="vapaateksti3">Teksti 3:</label>
+    <textarea id="vapaateksti3"></textarea>
+    
+    <label for="taustakuva">Taustakuvan URL:</label>
+    <input type="text" id="taustakuva">
+    
+    <label for="logo">Logon URL tai tiedostopolku:</label>
+    <input type="text" id="logo">
+    
+    <label for="teemakuva">Teemakuvan URL tai tiedostopolku:</label>
+    <input type="text" id="
