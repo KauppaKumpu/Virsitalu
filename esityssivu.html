@@ -22,6 +22,19 @@
             padding: 20px;
             border-radius: 10px;
         }
+        #otsikko {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        #virret {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        #tekstit p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
         #logo {
             position: absolute;
             top: 10px;
@@ -59,10 +72,13 @@
                 }
 
                 document.getElementById("otsikko").innerText = data.otsikko || "Tilaisuuden otsikko";
-                document.getElementById("virret").innerText = data.virret || "Virret";
+
+                const virret = data.virret.split(",").map(v => v.trim());
+                const virretContainer = document.getElementById("virret");
+                virretContainer.innerHTML = virret.map(v => `<p>${v}</p>`).join("");
 
                 const tekstit = document.getElementById("tekstit");
-                data.vapaatekstit.forEach((teksti, index) => {
+                data.vapaatekstit.forEach((teksti) => {
                     if (teksti) {
                         const p = document.createElement("p");
                         p.innerText = teksti;
@@ -83,7 +99,7 @@
     <img id="teemakuva" style="display:none;" alt="Teemakuva">
     <div class="content">
         <h1 id="otsikko">Tilaisuuden otsikko</h1>
-        <p id="virret">Virret</p>
+        <div id="virret"></div>
         <div id="tekstit"></div>
     </div>
 </body>
